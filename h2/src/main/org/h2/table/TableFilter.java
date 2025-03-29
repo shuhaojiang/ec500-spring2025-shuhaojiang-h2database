@@ -1292,4 +1292,11 @@ public class TableFilter implements ColumnResolver {
         }
     }
 
+    /**
+     * Adding this method for hw5
+     */
+    public Expression getFullCondition(){
+        return fullCondition;
+    }
+
 }

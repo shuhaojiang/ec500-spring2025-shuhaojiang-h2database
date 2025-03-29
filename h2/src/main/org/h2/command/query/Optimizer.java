@@ -82,7 +82,10 @@ class Optimizer {
         } else {
             startNs = System.nanoTime();
             if (filters.length <= MAX_BRUTE_FORCE_FILTERS) {
-                calculateBruteForceAll(isSelectCommand);
+                //calculateBruteForceAll(isSelectCommand);
+                RuleBasedJoinOrderPicker ruleBasedJoinOrderPicker = new RuleBasedJoinOrderPicker(session, filters);
+                TableFilter[] ruleBasedResult = ruleBasedJoinOrderPicker.bestOrder();
+                testPlan(ruleBasedResult, isSelectCommand);
             } else {
                 calculateBruteForceSome(isSelectCommand);
                 random = new Random(0);
